@@ -7,7 +7,7 @@ Text widget, that turns URLs, email and phone numbers into clickable inline link
 Install by adding this package to your `pubspec.yaml`:
 ```yaml
 dependencies:
-	flutter_autolink_text: ^1.0.0
+  flutter_autolink_text: ^1.0.0
 ```
 
 ## Usage
