@@ -1,14 +1,51 @@
 # flutter_autolink_text
 
-Flutter Autolink Text Widget.
+Text widget, that turns URLs, email and phone numbers into clickable inline links in text for flutter
 
-## Getting Started
+## Install
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+Install by adding this package to your `pubspec.yaml`:
+```yaml
+dependencies:
+	flutter_autolink_text: ^1.0.0
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Usage
+### Basic:
+```dart
+import 'package:flutter_autolink_text/flutter_autolink_text.dart';
+
+AutolinkText(
+	text: 'Your text with link www.example.com',
+	textStyle: TextStyle(color: Colors.black),
+	linkStyle: TextStyle(color: Colors.blue),
+	onWebLinkTap: (link) => print('Clicked: ${link}')
+);
+```
+
+### Add more links:
+To add autolink to emails and phone numbers:
+```dart
+import 'package:flutter_autolink_text/flutter_autolink_text.dart';
+
+AutolinkText(
+	text: ...,
+	textStyle: TextStyle(color: Colors.black),
+	linkStyle: TextStyle(color: Colors.blue),
+	onWebLinkTap: (link) => print('Clicked: ${link}'),
+	onEmailTap: (link) => print('Clicked: ${link}'),
+	onPhoneTap: (link) => print('Clicked: ${link}')
+);
+```
+
+### Humanizing:
+Remove `http://` or `https://` from the start of the URL using `humanize`:
+```dart
+import 'package:flutter_autolink_text/flutter_autolink_text.dart';
+
+AutolinkText(
+	text: 'Link is https://example.com',
+	humanize: true,
+	...
+);
+```
