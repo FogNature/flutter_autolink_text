@@ -1,3 +1,7 @@
-## [1.0.0] - 05.09.2019
+## [1.0.0]
 
 Initial version
+
+## [1.0.0+1]
+
+Code refactoring

@@ -1,5 +1,8 @@
 # flutter_autolink_text
 
+[![pub package](https://img.shields.io/pub/v/flutter_autolink_text.svg)](https://pub.dev/packages/flutter_autolink_text)
+
+## About
 Text widget, that turns URLs, email and phone numbers into clickable inline links in text for flutter
 
 ## Install
@@ -38,6 +41,8 @@ AutolinkText(
 );
 ```
 
+If you're using [`url_launcher`](https://pub.dev/packages/url_launcher) to open your links in browser, you can add `mailto:` for emails and `tel:` for phone numbers to open them in other apps
+
 ### Humanizing:
 Remove `http://` or `https://` from the start of the URL using `humanize`:
 ```dart
@@ -49,3 +54,5 @@ AutolinkText(
 	...
 );
 ```
+
+![](example.jpg)
