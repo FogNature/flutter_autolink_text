@@ -14,7 +14,7 @@ class AutolinkText extends StatelessWidget {
   final String text;
   final VoidArgumentedCallback onWebLinkTap, onPhoneTap, onEmailTap;
   final TextStyle textStyle, linkStyle;
-  bool humanize = false;
+  bool humanize;
 
   AutolinkText({
     Key key,
@@ -58,6 +58,12 @@ class AutolinkText extends StatelessWidget {
       recognizer.onTap = () => _onLinkTap(match.text, match.type);
       return TextSpan(text: match.text, style: linkStyle, recognizer: recognizer);
     }).toList();
+  }
+  
+  @override
+  void initState() {
+    humanize = humanize ?? false;
+    super.initState();
   }
 
   @override
@@ -119,9 +125,6 @@ List<_MatchedString> _findMatches(String text, String types, bool humanize) {
       if (matchedBefore.type == _MatchType.none) {
         final webMatches = _findLinksByType(matchedBefore.text, _MatchType.link);
         for (_MatchedString webMatch in webMatches) {
-          print("type="+webMatch.type.toString());
-          print("text="+webMatch.text);
-          print("humanize="+humanize.toString());
           if (webMatch.type == _MatchType.link
               && (webMatch.text.startsWith('http://') || webMatch.text.startsWith('https://'))
               && humanize) {
