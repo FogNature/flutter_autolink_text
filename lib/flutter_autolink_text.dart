@@ -14,7 +14,7 @@ class AutolinkText extends StatelessWidget {
   final String text;
   final VoidArgumentedCallback onWebLinkTap, onPhoneTap, onEmailTap;
   final TextStyle textStyle, linkStyle;
-  bool humanize;
+  final bool humanize;
 
   AutolinkText({
     Key key,
@@ -24,7 +24,7 @@ class AutolinkText extends StatelessWidget {
     this.onWebLinkTap,
     this.onEmailTap,
     this.onPhoneTap,
-    this.humanize
+    this.humanize = false
   }) : super(key: key);
 
   _onLinkTap(String link, _MatchType type) {
@@ -58,12 +58,6 @@ class AutolinkText extends StatelessWidget {
       recognizer.onTap = () => _onLinkTap(match.text, match.type);
       return TextSpan(text: match.text, style: linkStyle, recognizer: recognizer);
     }).toList();
-  }
-  
-  @override
-  void initState() {
-    humanize = humanize ?? false;
-    super.initState();
   }
 
   @override
