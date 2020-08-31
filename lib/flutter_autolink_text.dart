@@ -152,7 +152,7 @@ RegExp _getRegExpByType(_MatchType type) {
 
 List<_MatchedString> _findLinksByType(String text, _MatchType type) {
   List<_MatchedString> output = [];
-  final matches = _getRegExpByType(type).allMatches(text);
+  final matches = _getRegExpByType(type).allMatches(text ?? '');
   int endOfMatch = 0;
   for (Match match in matches) {
     final before = text.substring(endOfMatch, match.start);
