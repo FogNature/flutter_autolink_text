@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -31,23 +31,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   GlobalKey<ScaffoldState> scaffold = new GlobalKey();
 
-  void showSnack(String link) {
-    scaffold.currentState.showSnackBar(SnackBar(content: Text('Clicked: ${link}')));
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffold,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
         child: AutolinkText(
             text: 'Your text with link www.example.com',
             textStyle: TextStyle(color: Colors.black),
             linkStyle: TextStyle(color: Colors.blue),
-            onWebLinkTap: (link) => showSnack(link)
         ),
       ),// This trailing comma makes auto-formatting nicer for build methods.
     );
